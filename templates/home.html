@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="table">
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    {% for message in messages %}
+        <div class="alert alert-success alert-dismissible">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            {{message}}
+        </div>
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+    
+    <table>
+        <thead>
+            <th>Identificación</th>
+            <th>Nombres</th>        
+            <th>Fecha de Nacimiento</th>
+            <th>Ciudad</th>
+            <th>Barrio</th>
+            <th>Teléfono</th>
+            <tr></tr>
+        </thead>
+        <tbody>
+            {% for users in user %}
+                <tr>
+                    <td>{{users.0}}</td>
+                    <td>{{users.1}} {{users.2}}</td>             
+                    <td>{{users.3}}</td>
+                    <td>{{users.4}}</td>
+                    <td>{{users.5}}</td>
+                    <td>{{users.6}}</td>
+                    <td>
+                        <a href="/edit/{{users.0}}" class="btn btn-primary">Editar</a>
+                        <a href="/delete/{{users.0}}" class="btn btn-danger btn-delete">Eliminar</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}

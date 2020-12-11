@@ -1,0 +1,60 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-success alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                {{message}}
+            </div>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+        <div>
+            <h1>Actualización de datos.</h1>
+        </div>
+        
+            <form class="form-horizontal" action="/update/{{edit.0}}" method="POST">
+                <div class="form-group">
+                    <div class="col-sm-10">
+                    <input type="text" class="form-control" placeholder="Ingrese indentificación" name="id" value="{{edit.0}}" readonly>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" placeholder="Ingrese nombre" name="name" value="{{edit.1}}">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" placeholder="Ingrese apellido" name="lastname" value="{{edit.2}}">
+                    </div>      
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" placeholder="DD/MM/AAAA" name="birthdate" value="{{edit.3}}">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" placeholder="Ingrese ciudad" name="city" value="{{edit.4}}">
+                    </div>
+                </div>
+                <div class="form-group">  
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" placeholder="Ingrese barrio" name="neighborhood" value="{{edit.5}}">
+                    </div>
+                </div>
+                <div class="form-group">  
+                    <div class="col-sm-10">
+                        <input type="number" class="form-control" placeholder="Ingrese teléfono" name="cellPhone" value="{{edit.6}}">
+                    </div>
+                </div>
+                <div class="from-grup">
+                    <button type="submit" class="btn btn-success btn-block">Actualizar</button>
+                </div>
+            </form>
+
+{% endblock %}
